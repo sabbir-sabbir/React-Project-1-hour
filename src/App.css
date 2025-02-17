@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+
+.all-links {
+    @apply font-semibold text-white hover:text-zinc-600
+}
+
+.active{
+    color: red;
+}
