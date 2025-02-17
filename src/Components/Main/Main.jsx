@@ -3,7 +3,7 @@ import axios from 'axios'
 import {NavLink} from 'react-router-dom'
 
 const Main = () => {
-  const [data, setData] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(()=> {
     loadData();
@@ -11,7 +11,12 @@ const Main = () => {
 
   const loadData = async ()=> {
     const result = await axios.get("http://localhost:3003/users")
-    setData(result.data.reverse())
+    setUsers(result.data.reverse())
+  }
+
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:3003/users/${id}`)
+    loadData()
   }
   return (
     <>
@@ -31,17 +36,18 @@ const Main = () => {
       </tr>
     </thead>
     <tbody className="text-gray-600 text-sm">
-      {data.map((user, i) => (
+      {users.map((user, i) => (
         <tr key={i} className="tbody-row">
           <td className="tbody-td">{i + 1}</td>
           <td className="tbody-td">{user.name}</td>
           <td className="tbody-td">{user.username}</td>
           <td className="tbody-td">{user.email}</td>
           <td className="py-3 px-1 flex items-center gap-2 justify-center border border-gray-300">
-          <button className="all-btn">View</button>
-          <NavLink to='/users/edit' ><button className="all-btn">Edit</button></NavLink>
+            <NavLink to={`/users/${user.id}`} ><button className="all-btn">View</button></NavLink>
+
+          <NavLink to={`/users/edit/${user.id}`} ><button className="all-btn">Edit</button></NavLink>
           
-          <button className="all-btn !bg-red-500 !text-white">Delete</button>
+          <button onClick={()=> deleteUser(user.id)} className="all-btn !bg-red-500 !text-white">Delete</button>
           </td>
           
         </tr>

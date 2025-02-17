@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios'
 
 const EditUser = () => {
-
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
@@ -22,10 +23,18 @@ const EditUser = () => {
 
     const onSubmit =  async  (e)=> {
         e.preventDefault();
-        await Axios.post("http://localhost:3003/users", user);
+        await Axios.put(`http://localhost:3003/users/${id}`, user);
         navigate("/")
     };
+   
+    const loadUser = async ()=> {
+        const res = await Axios.get(`http://localhost:3003/users/${id}`)
+        setUser(res.data);
+    }
 
+    useEffect(()=> {
+        loadUser();
+    },[]);
   return (
      <>
     <div className="w-full h-auto px-14 py-5">
@@ -37,7 +46,7 @@ const EditUser = () => {
         <input onChange={(e)=> onInputChange(e)} className="all-input" type="email" value={email} name="email" placeholder="Enter Your Email Address" autoComplete='off'/>
         <input onChange={(e)=> onInputChange(e)} className="all-input" type="text" value={phone} name="phone" placeholder="Enter Your Phone Number" autoComplete='off'/>
         <input onChange={(e)=> onInputChange(e)} className="all-input" type="text" value={website} name="website" placeholder="Enter Your Website URL" autoComplete='off'/>
-        <input  className="all-input !bg-sky-300 !text-zinc-700 !font-semibold" type="submit" value="Submit"   />
+        <input  className="all-input !bg-sky-300 !text-zinc-700 !font-semibold" type="submit" value="UPDATE !"   />
        
     </form>
    </div>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-*{
-    scrollbar-width: 0;
-}
+*::-webkit-scrollbar {
+    display: none;
+  }
 
 .all-links {
     @apply font-semibold text-white hover:text-zinc-600
