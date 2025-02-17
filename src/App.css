@@ -1,8 +1,31 @@
 @import "tailwindcss";
 
+*{
+    scrollbar-width: 0;
+}
 
 .all-links {
     @apply font-semibold text-white hover:text-zinc-600
+}
+
+.nav-bar {
+    @apply w-full h-auto px-14 py-3 bg-sky-300 flex justify-between items-center
+}
+
+.all-btn {
+    @apply py-2 px-2 rounded-md bg-sky-400 text-zinc-600 font-semibold
+}
+
+.tbody-row {
+    @apply border-b border-gray-300 hover:bg-gray-100
+}
+
+.tbody-td{
+    @apply py-3 px-6 border border-gray-300
+}
+
+.all-input {
+    @apply w-[500px]  px-3 py-3 border-1 border-zinc-400 outline-0 focus:outline-2 outline-sky-300
 }
 
 .active{
