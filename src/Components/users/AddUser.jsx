@@ -24,10 +24,13 @@ const AddUser = () => {
         await Axios.post("http://localhost:3003/users", user);
         navigate("/")
     };
+    
+    
+
   return (
    <>
   <div className="w-full h-auto px-14 py-5">
-   <div className="flex flex-col   justify-center items-center gap-4">
+   <div className="flex flex-col   justify-center items-center gap-4 shadow-lg py-3">
     <div><h1 className="text-zinc-600 text-4xl my-4">ADD USERS HERE !</h1></div>
     <form onSubmit={(e)=> onSubmit(e)}  className="flex flex-col justify-start items-start gap-4" action="">
         <input onChange={(e)=> onInputChange(e)} className="all-input" type="text" value={name} name="name" placeholder="Enter Your Name" autoComplete='off' />
