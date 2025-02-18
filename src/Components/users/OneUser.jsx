@@ -24,7 +24,7 @@ const OneUser = () => {
   return (
     <>
     <div className="w-full h-auto py-5 px-14  flex flex-col items-center gap-5 ">
-     <div><h1>Rnadom ID: {user.id} </h1></div>
+     <div><h1>Rnadom ID: {id} </h1></div>
      <div className="flex flex-col items-center gap-2">
       <div>Name: {user.name}</div>
       <div>Username: {user.username}</div>
@@ -38,4 +38,4 @@ const OneUser = () => {
   )
 }
 
-export default OneUser
+export default OneUser;
