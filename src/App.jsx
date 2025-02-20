@@ -8,6 +8,7 @@ import Notfound from './Not-found'
 import AddUser from './Components/users/AddUser'
 import EditUser from './Components/users/EditUser'
 import OneUser from './Components/users/OneUser'
+import SignInGoogle from './Components/Auth/SignInGoogle'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route  path="/users/add" element={<AddUser/>} />
           <Route  path="/users/edit/:id" element={<EditUser/>} />
           <Route  path="/users/:id" element={<OneUser/>} />
+          <Route  path="/signin" element={<SignInGoogle/>} />
           <Route  path="*" element={<Notfound/>} />
         </Routes>
      </BrowserRouter>
